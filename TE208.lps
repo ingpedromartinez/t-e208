@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="TE208.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="61"/>
+        <CursorPos X="42" Y="59"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="8" HistoryIndex="7">
+      <Position1>
+        <Filename Value="TE208.lpr"/>
+        <Caret Line="65" Column="29" TopLine="95"/>
+      </Position1>
+      <Position2>
+        <Filename Value="TE208.lpr"/>
+        <Caret Line="20" Column="35" TopLine="4"/>
+      </Position2>
+      <Position3>
+        <Filename Value="TE208.lpr"/>
+        <Caret Line="12" Column="34"/>
+      </Position3>
+      <Position4>
+        <Filename Value="TE208.lpr"/>
+        <Caret Line="46" Column="15" TopLine="19"/>
+      </Position4>
+      <Position5>
+        <Filename Value="TE208.lpr"/>
+        <Caret Line="66" Column="20"/>
+      </Position5>
+      <Position6>
+        <Filename Value="TE208.lpr"/>
+        <Caret Line="114" Column="29" TopLine="95"/>
+      </Position6>
+      <Position7>
+        <Filename Value="TE208.lpr"/>
+        <Caret Line="104" Column="9" TopLine="52"/>
+      </Position7>
+      <Position8>
+        <Filename Value="TE208.lpr"/>
+        <Caret Line="65" Column="27" TopLine="49"/>
+      </Position8>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
