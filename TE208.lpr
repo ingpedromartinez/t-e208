@@ -23,6 +23,145 @@ var
    nomAS,autor:string;
    ref:tRLibroPtr;
 
+
+
+
+Procedure OrdenarLibros(a:string);
+          var
+             arch:tASecuencial;
+             A1:tASecuencial;
+             A2:tASecuencial;
+             AF:tASecuencial;
+             reg:tRlibro;
+             numR,tsec,part:integer;
+             aX:boolean;
+
+          begin
+          assign(A1,'aux1.dat');
+          assign(A1,'aux2.dat');
+          assign(AF,'aux3.dat');
+          rewrite(A1);
+          rewrite(A2);
+          rewrite(AF);
+
+
+
+          {Obtener num de registros}
+          Assign(arch,a);
+          reset(arch);
+          numR:=0;
+          while not EOF(arch) do
+                begin
+                     read(arch,reg);
+                     numR:=numR+1;
+                     write(AF,reg);
+                end;
+          part:=1;
+          while part<numR do
+                begin
+                     tsec :=part*2;
+                     {Acomodar las particiones de tamaño part}
+                     a2=false;
+                     rewrite(A1);
+                     rewrite(A2);
+                     while i<numR do
+                           begin
+
+                           end;
+                     {Ordenar secuencias de tamano tsec en A1,A2}
+
+
+                end;
+
+          end;
+
+Procedure ConsultaUnLibro(a:string; cve: integer; existe:boolean; rlib: tRLibro);
+          var
+             arch: tAsecuencial;
+
+          begin
+          existe:=false;
+          assign(arch,a);
+          reset(arch);
+          while (not EOF(arch)) and (not existe) do
+                begin
+                     read(arch,rlib);
+                     if  rlib.clave = clave then existe:= true;
+                end;
+          close(arch);
+          end;
+
+Procedure ConsultaTotalDeLibros(a:string);
+          var
+             total:integer;
+             arch:tAsecuencial;
+             r:tRlibro;
+
+          begin
+          assign(arch,a);
+          reset(arch);
+          writeln('...............................................................');
+          writeln('cve'#9'titulo'#9'autor'#9'edicion'#9'genero'#9'isbn'#9'precio');
+          while not EOF(arch) do
+                begin
+                     read(arch,r);
+                     writeln(r.clave#9r.titulo#9r.autor#9r.edicion#9r.genero#9r.isbn#9r.precio);
+                     total:=total+1;
+                end;
+          writeln('...............................................................');
+          writeln('El total de libros es: '+inttostr(total));
+          end;
+
+Procedure BajaDeLibro(a:string;cve:integer);
+          var
+             r:tRlibro;
+             arch:tASecuencial;
+             aux:tASecuencial;
+
+          begin
+          assign(arch,a);
+          assign(aux,'librosaux.dat');
+          reset(arch);
+          rewrite(aux);
+          while not EOF(arch) do
+                begin
+                     read(arch,r);
+                     if r.clave <> cve then write(arch,r);
+                end;
+          close(arch);
+          close(aux);
+
+          deletefile(a);
+          rename(aux,a);
+          end;
+
+Procedure ModificaLibro(a:string;cve:int);
+
+          var
+             r:tRlibro;
+             arch:tASecuencial;
+             aux:tASecuencial;
+
+          begin
+          assign(arch,a);
+          assign(aux,'aux.dat');
+
+          reset(arch);
+          rewrite(aux);
+
+          while not EOF(arch) do
+                begin
+                     read(arch,r);
+                     if r.clave<>cve then write(arch,r);
+                end;
+          close(arch);
+          close(AUX);
+
+          deletefile(a);
+          rename(aux,a);
+
+          end;
+
 Procedure CrearArchivo(a: String);
 
 	var
