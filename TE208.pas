@@ -1,5 +1,5 @@
-program TE208;
-
+        program TE208;
+{$CODEPAGE UTF8}
 uses SysUtils;
 
 Type
@@ -33,7 +33,7 @@ Procedure OrdenarLibros(a:string);
              A2:tASecuencial;
              AF:tASecuencial;
              reg:tRlibro;
-             numR,tsec,part:integer;
+             i,numR,tsec,part:integer;
              aX:boolean;
 
           begin
@@ -61,7 +61,7 @@ Procedure OrdenarLibros(a:string);
                 begin
                      tsec :=part*2;
                      {Acomodar las particiones de tamaño part}
-                     a2=false;
+                     aX:=false;
                      rewrite(A1);
                      rewrite(A2);
                      while i<numR do
@@ -86,7 +86,7 @@ Procedure ConsultaUnLibro(a:string; cve: integer; existe:boolean; rlib: tRLibro)
           while (not EOF(arch)) and (not existe) do
                 begin
                      read(arch,rlib);
-                     if  rlib.clave = clave then existe:= true;
+                     if  rlib.clave = cve then existe:= true;
                 end;
           close(arch);
           end;
@@ -102,10 +102,11 @@ Procedure ConsultaTotalDeLibros(a:string);
           reset(arch);
           writeln('...............................................................');
           writeln('cve'#9'titulo'#9'autor'#9'edicion'#9'genero'#9'isbn'#9'precio');
+          total := 0;
           while not EOF(arch) do
                 begin
                      read(arch,r);
-                     writeln(r.clave#9r.titulo#9r.autor#9r.edicion#9r.genero#9r.isbn#9r.precio);
+                     writeln(r.clave,',',r.titulo,',',r.autor,',',r.edicion,',',r.genero,',',r.isbn,',',r.precio);
                      total:=total+1;
                 end;
           writeln('...............................................................');
@@ -135,7 +136,7 @@ Procedure BajaDeLibro(a:string;cve:integer);
           rename(aux,a);
           end;
 
-Procedure ModificaLibro(a:string;cve:int);
+Procedure ModificaLibro(a:string;cve:integer);
 
           var
              r:tRlibro;
@@ -152,7 +153,7 @@ Procedure ModificaLibro(a:string;cve:int);
           while not EOF(arch) do
                 begin
                      read(arch,r);
-                     if r.clave<>cve then write(arch,r);
+                     if r.clave<>cve then write(arch,r)
                 end;
           close(arch);
           close(AUX);
@@ -234,7 +235,7 @@ Procedure ReportePorAutor (a:string;autor:string; aSal:string);
         while (not EOF(Reporte)) do
               begin
                    read(aEntrada,reg);
-                   if reg.autor=autor then writeln(Reporte,inttostr(i)+'   '+inttostr(reg.clave)+'    '+reg.titulo+'   '+inttostr(reg.edicion)+'      '+reg.genero+'     '+reg.isbn+'     '+floattostr(reg.precio));
+                   if reg.autor=autor then writeln(Reporte,i,'   ',reg.clave,'    ',reg.titulo,'   ',reg.edicion,'      ',reg.genero,'     ',reg.isbn,'     ',reg.precio);
                    i:=i+1;
               end;
 
@@ -281,6 +282,7 @@ begin
     1:
       begin
            writeln('Ingrese el nombre del archivo');
+           readln(nomAE);
            CrearArchivo(nomAE);
            writeln('Archivo Creado exitosamente');
       end;
@@ -304,5 +306,3 @@ begin
       end;
   end;
 end.
-
-
